@@ -1,7 +1,5 @@
 numpy
 pandas
-scikit-learn
-tensorflow
 pillow
 ipykernel
 streamlit

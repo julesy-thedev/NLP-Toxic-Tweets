@@ -5,11 +5,9 @@ title = "Toxic Tweets"
 st.title(title)
 
 options = np.array(["BERT", "GPT"])
-st.selectbox("Select Model", options)
+choice = st.selectbox("Select Model", options)
 
-st.text("Enter Text")
+response = st.text_input("Enter Text")
 
-if st.button('Process Text'):
-    st.write('TODO')
-else:
-    st.write('NOT TODO')
+if st.button("Process Text"):
+    st.write("TODO Button Press. {}".format(response))
