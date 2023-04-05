@@ -1,6 +1,6 @@
 ---
 title: Toxic Tweets
-emoji: 🤗
+emoji: 🤢
 colorFrom: yellow
 colorTo: orange
 sdk: streamlit
