@@ -12,6 +12,7 @@ choice = st.selectbox("Select Model:", options)
 
 response = st.text_input("Enter Text to Analyse:", "I am excited to begin working on this CS482 Project!")
 
-if st.button("Process Text"):
+if st.button("Submit"):
     pred = classifier(response)
+    st.header(":blue[Results]")
     st.write(pred)
