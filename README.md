@@ -1,4 +1,14 @@
-# CS480-Toxic-Tweets
+---
+title: Toxic Tweets
+emoji: 🤗
+colorFrom: yellow
+colorTo: orange
+sdk: streamlit
+app_file: app.py
+pinned: false
+---
+
+# Toxic Tweets
 Developing a Language Model to classify toxic 🤢 tweets using HugginFace, Streamlit and GitHub.
 
 Jules Blount
