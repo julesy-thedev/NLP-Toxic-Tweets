@@ -7,8 +7,8 @@ import tensorflow as tf
 
 models = {
     "DistilBERT": "distilbert-base-uncased-finetuned-sst-2-english",
-    "RoBERTa": "cardiffnlp/twitter-roberta-base-sentiment-latest",
-    "XLM-RoBERTa": "cardiffnlp/xlm-roberta-base-sentiment-multilingual",
+    "RoBERTa": "roberta-large-mnli",
+    "XLM-RoBERTa": "cardiffnlp/twitter-xlm-roberta-base-sentiment",
     "ELECTRA": "bhadresh-savani/electra-base-emotion"
 }
 
@@ -18,30 +18,28 @@ st.title(title)
 options = np.array( list(models.keys()) )
 choice = str(st.selectbox("Select Model:", options))
 
-pt_model = models[choice]
+pre_model = models[choice]
 
-tokenizer = AutoTokenizer.from_pretrained(pt_model)
-model = TFAutoModelForSequenceClassification.from_pretrained(pt_model)
+tokenizer = AutoTokenizer.from_pretrained(pre_model)
+model = TFAutoModelForSequenceClassification.from_pretrained(pre_model)
 
-classifier = pipeline("text-classification", model=pt_model)
+classifier = pipeline("text-classification", model=pre_model)
 
 response = st.text_input("Enter Text to Analyse:", "I am excited to begin working on this CS482 Project!")
 
 if st.button("Submit"):
     st.header(":blue[Results]")
 
-    pred = classifier(response)
-    st.write(pred)
+    #pred = classifier(response)
+    #st.write(pred)
 
-    tokens = tokenizer(response, padding=True, truncation=True, return_tensors="tf")
-    outputs = model(**tokens)
+    tokens = tokenizer(response, padding=True, truncation=True, return_tensors='tf')
+    outputs = model(tokens)
 
     predictions = tf.nn.softmax(outputs.logits, axis=-1)
     predicted_class_id = int(tf.math.argmax(outputs.logits, axis=-1)[0])
-    model.config.id2label[predicted_class_id]
 
     st.write(predictions)
-    st.write(predicted_class_id)
 
     st.write(model.config.id2label)
     st.write(model.config.id2label[predicted_class_id])
