@@ -6,7 +6,6 @@ import torch
 from transformers import pipeline, AutoTokenizer, AutoModelForSequenceClassification
 
 models = {
-    "BERT": "bert-base-uncased",
     "DistilBERT": "distilbert-base-uncased-finetuned-sst-2-english"
 }
 
