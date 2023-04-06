@@ -14,7 +14,7 @@ classifier = pipeline("text-classification")
 title = "Toxic Tweets"
 st.title(title)
 
-dict_keys = models.keys()
+dict_keys = list(models.keys())
 options = np.array(dict_keys)
 choice = str(st.selectbox("Select Model:", options))
 
