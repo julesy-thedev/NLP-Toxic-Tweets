@@ -33,7 +33,7 @@ if st.button("Submit"):
     #pred = classifier(response)
     #st.write(pred)
 
-    tokens = tokenizer(response, padding=True, truncation=True, return_tensors='tf')
+    tokens = tokenizer(response, return_tensors='tf')
     outputs = model(tokens)
 
     predictions = tf.nn.softmax(outputs.logits, axis=-1)
