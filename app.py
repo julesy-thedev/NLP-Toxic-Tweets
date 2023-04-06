@@ -15,7 +15,9 @@ choice = st.selectbox("Select Model:", options)
 
 response = st.text_input("Enter Text to Analyse:", "I am excited to begin working on this CS482 Project!")
 
-checkpoint = "distilbert-base-uncased-finetuned-sst-2-english"
+#checkpoint = "distilbert-base-uncased-finetuned-sst-2-english"
+checkpoint = "bert-base-uncased"
+
 tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 model = AutoModelForSequenceClassification.from_pretrained(checkpoint)
 
