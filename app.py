@@ -6,10 +6,11 @@ import torch
 from transformers import pipeline, AutoTokenizer, AutoModelForSequenceClassification
 
 models = {
-    "DistilBERT": "distilbert-base-uncased-finetuned-sst-2-english"
+    "DistilBERT": "distilbert-base-uncased-finetuned-sst-2-english",
+    "RoBERTa": "cardiffnlp/twitter-roberta-base-sentiment-latest",
+    "XLM-RoBERTa": "cardiffnlp/xlm-roberta-base-sentiment-multilingual",
+    "ELECTRA": "bhadresh-savani/electra-base-emotion"
 }
-
-classifier = pipeline("text-classification")
 
 title = "Toxic Tweets"
 st.title(title)
@@ -20,6 +21,8 @@ choice = str(st.selectbox("Select Model:", options))
 
 tokenizer = AutoTokenizer.from_pretrained(models[choice])
 model = AutoModelForSequenceClassification.from_pretrained(models[choice])
+
+classifier = pipeline("text-classification", model=models[choice])
 
 response = st.text_input("Enter Text to Analyse:", "I am excited to begin working on this CS482 Project!")
 
