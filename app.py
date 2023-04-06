@@ -30,16 +30,13 @@ response = st.text_input("Enter Text to Analyse:", "I am excited to begin workin
 if st.button("Submit"):
     st.header(":blue[Results]")
 
-    #pred = classifier(response)
-    #st.write(pred)
-
     tokens = tokenizer(response, return_tensors='tf')
     outputs = model(tokens)
 
     predictions = tf.nn.softmax(outputs.logits, axis=-1)
     predicted_class_id = int(tf.math.argmax(outputs.logits, axis=-1)[0])
 
-    st.write(predictions)
-
-    st.write(model.config.id2label)
-    st.write(model.config.id2label[predicted_class_id])
+    pred = classifier(response)
+    
+    st.write(pred)
+    st.write("This sentence seems: ", model.config.id2label[predicted_class_id])
