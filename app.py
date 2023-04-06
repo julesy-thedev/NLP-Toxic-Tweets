@@ -35,7 +35,13 @@ if st.button("Submit"):
 
     tokens = tokenizer(response, padding=True, truncation=True, return_tensors="tf")
     outputs = model(**tokens)
+
     predictions = tf.nn.softmax(outputs.logits, axis=-1)
+    predicted_class_id = int(tf.math.argmax(outputs.logits, axis=-1)[0])
+    model.config.id2label[predicted_class_id]
 
     st.write(predictions)
+    st.write(predicted_class_id)
+
     st.write(model.config.id2label)
+    st.write(model.config.id2label[predicted_class_id])
