@@ -6,3 +6,4 @@ streamlit
 transformers
 tensorflow
 torch
+sentencepiece
