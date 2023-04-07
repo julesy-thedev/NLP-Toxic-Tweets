@@ -31,3 +31,5 @@ The tutorial I followed to install docker on my server is located [Here](https:/
 For _milestone-2_, I was tasked to develop a streamlit app that allows the user to enter a text, select a pretrained model and get the sentiment analysis of the text using HuggingFace transformers library and HuggingFace Spaces.
 
 Streamlite app is located [here](https://huggingface.co/spaces/julesy/toxic-tweets)
+
+https://user-images.githubusercontent.com/45794969/230540060-2a790672-6e8c-4c14-8842-6237a88ff91d.mp4
