@@ -24,7 +24,7 @@ st.write("Model Used: ", pre_model)
 tokenizer = AutoTokenizer.from_pretrained(pre_model)
 model = TFAutoModelForSequenceClassification.from_pretrained(pre_model)
 
-response = st.text_input("Enter Text to Analyse:", "I am excited to begin working on this CS482 Project!")
+response = st.text_input("Enter Text to Analyse:", "I am excited to begin working on this Project!")
 
 if st.button("Submit"):
     st.write(":blue[=== Results ===]")
