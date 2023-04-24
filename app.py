@@ -60,12 +60,10 @@ response = st.text_input("Enter Tweet to Analyse:", "I am excited to begin worki
 if st.button("Evaluate Tweet"):
     st.write(":blue[=== Results ===]")
 
-    sample_tweets = [].append(response)
-
-    inputs = tokenizer(sample_tweets, padding=True, return_tensors="tf")
+    inputs = tokenizer(response, padding=True, return_tensors="tf")
     logits = model(**inputs).logits
 
-    result = process_button(logits, sample_tweets)
+    result = process_button(logits, response)
 
     df = pd.DataFrame(result)
 
