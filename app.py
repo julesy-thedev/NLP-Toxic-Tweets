@@ -30,20 +30,34 @@ data = {
   "percent": []
 }
 
-if st.button("Load Tweets"):
+if st.button("Evaluate Sample Tweets"):
+
     st.write(":blue[=== Results ===]")
 
-    for i,j in enumerate(sample_tweets):
-        tokens = tokenizer(j, return_tensors='tf')
-        outputs = model(tokens)
+    inputs = tokenizer(sample_tweets, padding=True, return_tensors="tf")
+    logits = model(**inputs).logits
 
-        predictions = tf.nn.softmax(outputs.logits, axis=-1)
+    probs = tf.math.sigmoid(logits)
+    probs2label = np.zeros(probs.shape)
 
-        predicted_amount = float(tf.math.reduce_max(predictions, axis=-1)[0])
-        predicted_class_id = int(tf.math.argmax(predictions, axis=-1)[0])
+    probs2label[np.where(probs >= 0.5)] = 1
 
-        data["label"].append(model.config.id2label[predicted_class_id])
-        data["percent"].append(predicted_amount)
+    for idx, row in enumerate(probs2label):
+        last = np.flatnonzero(row)
+
+        highest_level = highest_level_prob = None
+
+        if len(last) > 0:
+            highest = last[-1]
+
+            highest_level = model.config.id2label[highest]
+            highest_level_prob = probs[idx, highest]
+        else:
+            highest_level = "Non-Toxic"
+            highest_level_prob = "N/A"
+
+        data["label"].append(highest_level)
+        data["percent"].append(highest_level_prob)
 
     df = pd.DataFrame(data)
 
