@@ -10,9 +10,15 @@ pinned: true
 
 # **PROJECT CESSPOOL**
 
-Explore _Project Cesspool_ futher and see it in action [here](https://sites.google.com/njit.edu/project-cesspool/home)
+Facilitating Quality Conversations
 
-## *Milestones*
+The internet has been a tool that has offered unprecedented utility to mankind, but it has also become a tool that can foster hatred and even cause individuals to commit suicide. The threat of abuse and harassment online means that many people stop expressing themselves and give up on seeking differing opinions. Platforms struggle to effectively facilitate conversations, leading many communities to limit or completely shut down user comments. This has led to a decrease in the diversity of opinions and ideas being shared online.
+
+It is important for platforms to take steps towards creating a safer online environment for users. The primary focus of Project Cesspool is to develop a tool that allows platform owners to use a multi-headed model capable of detecting different types of toxicity, such as threats, obscenity, insults, and identity-based hate.
+
+📺 See it in action here: [Live Demo](https://youtu.be/Al55zTl5AlI)
+
+## ✅*Milestones*
 
 Developing a Natureal Language Model to classify toxic 🤢 tweets using HugginFace, Streamlit, Tensorflow, Python and DistilBERT model.
 
